@@ -1,0 +1,10 @@
+// Punto único de importación de los datos:
+// import { site, areas, equipo, getActividades } from '../data'
+export * from './site'
+export * from './identidad'
+export * from './areas'
+export * from './equipo'
+export * from './actividades'
+export * from './estados'
+export * from './galeria'
+export * from './helpers'

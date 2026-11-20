@@ -1,0 +1,181 @@
+.header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: var(--z-header);
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid transparent;
+  transition: var(--transition);
+}
+
+/* Al hacer scroll: fondo sólido + línea verde inferior.
+   El fondo va en ::before porque backdrop-filter en el propio header
+   convertiría al menú móvil (position: fixed) en hijo "atrapado" del header. */
+.header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: rgb(15 22 27 / 0.92);
+  backdrop-filter: blur(12px);
+  opacity: 0;
+  transition: opacity var(--duration) var(--ease);
+}
+
+.scrolled::before {
+  opacity: 1;
+}
+
+.scrolled {
+  border-bottom-color: var(--color-border);
+  box-shadow: 0 2px 0 rgb(var(--color-primary-rgb) / 0.25);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.toggle {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  font-size: 1.5rem;
+  color: var(--color-heading);
+  background: var(--color-surface);
+  clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+  position: relative;
+  z-index: calc(var(--z-overlay) + 1);
+}
+
+.toggle:hover {
+  color: var(--color-primary);
+}
+
+/* ---------- Menú móvil (por defecto) ---------- */
+.nav {
+  position: fixed;
+  inset: 0 0 0 auto;
+  z-index: var(--z-overlay);
+  width: min(320px, 85vw);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  padding: calc(var(--header-height) + var(--space-4)) var(--space-5) var(--space-6);
+  background: var(--color-bg-deep);
+  border-left: 1px solid var(--color-border);
+  overflow-y: auto;
+  transform: translateX(100%);
+  visibility: hidden;
+  transition: transform 350ms var(--ease), visibility 350ms;
+}
+
+.open {
+  transform: translateX(0);
+  visibility: visible;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+}
+
+.link {
+  display: block;
+  padding: var(--space-3) 0;
+  font-family: var(--font-heading);
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-heading);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.link:hover,
+.active {
+  color: var(--color-primary);
+}
+
+.mobileExtra {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.cta {
+  display: none;
+}
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: calc(var(--z-overlay) - 1);
+  background: rgb(0 0 0 / 0.6);
+}
+
+/* ---------- Escritorio ---------- */
+@media (min-width: 992px) {
+  .toggle,
+  .mobileExtra,
+  .backdrop {
+    display: none;
+  }
+
+  .cta {
+    display: inline-flex;
+  }
+
+  .nav {
+    position: static;
+    width: auto;
+    padding: 0;
+    background: none;
+    border: none;
+    overflow: visible;
+    transform: none;
+    visibility: visible;
+    transition: none;
+  }
+
+  .links {
+    flex-direction: row;
+    gap: var(--space-6);
+  }
+
+  .link {
+    position: relative;
+    padding: var(--space-2) 0;
+    font-size: var(--fs-sm);
+    border: none;
+  }
+
+  /* subrayado animado */
+  .link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--color-primary);
+    box-shadow: var(--glow-primary);
+    transform: scaleX(0);
+    transition: transform var(--duration) var(--ease);
+  }
+
+  .link:hover::after,
+  .active::after {
+    transform: scaleX(1);
+  }
+}

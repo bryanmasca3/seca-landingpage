@@ -1,0 +1,82 @@
+.footer {
+  position: relative;
+  background: var(--color-bg-deep);
+  padding-top: var(--space-8);
+  border-top: 1px solid var(--color-border);
+}
+
+/* línea verde decorativa arriba a la izquierda */
+.footer::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: min(280px, 40%);
+  height: 3px;
+  background: var(--color-primary);
+  box-shadow: var(--glow-primary);
+}
+
+.grid {
+  display: grid;
+  gap: var(--space-7);
+  padding-bottom: var(--space-7);
+}
+
+.about {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  max-width: 380px;
+}
+
+.heading {
+  margin-bottom: var(--space-5);
+  font-size: var(--fs-lg);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.link:hover {
+  color: var(--color-primary);
+}
+
+.contactItem {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+
+.contactIcon {
+  flex-shrink: 0;
+  margin-top: 0.35em;
+  color: var(--color-primary);
+}
+
+.bottom {
+  border-top: 1px solid var(--color-border);
+  padding-block: var(--space-5);
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+}
+
+.bottomInner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.bottomInner p + p {
+  margin-top: 0;
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: 2fr 1fr 1fr;
+  }
+}

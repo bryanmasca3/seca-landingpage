@@ -1,0 +1,53 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-bottom: var(--space-7);
+}
+
+.center {
+  align-items: center;
+  text-align: center;
+  margin-inline: auto;
+  max-width: 720px;
+}
+
+.left {
+  align-items: flex-start;
+  text-align: left;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-heading);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+/* rayitas decorativas a los lados del eyebrow */
+.eyebrow::before,
+.center .eyebrow::after {
+  content: '';
+  width: 24px;
+  height: 2px;
+  background: currentColor;
+}
+
+.title {
+  font-size: var(--fs-2xl);
+}
+
+.highlight {
+  color: var(--color-primary);
+  text-shadow: var(--text-glow);
+}
+
+.description {
+  color: var(--color-text);
+  max-width: 620px;
+}

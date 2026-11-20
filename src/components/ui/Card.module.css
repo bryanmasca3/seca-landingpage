@@ -1,0 +1,70 @@
+.card {
+  --card-accent: var(--color-primary);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--color-surface);
+  clip-path: var(--clip-notch);
+  transition: var(--transition);
+  overflow: hidden;
+}
+
+/* línea de acento arriba */
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: var(--card-accent);
+  transform: scaleX(0.25);
+  transform-origin: left;
+  transition: transform var(--duration) var(--ease);
+  z-index: 1;
+}
+
+.hoverable:hover {
+  background: var(--color-surface-2);
+  transform: translateY(-6px);
+}
+
+.hoverable:hover::before {
+  transform: scaleX(1);
+}
+
+/* ---- Padding ---- */
+.p-none {
+  padding: 0;
+}
+
+.p-sm {
+  padding: var(--space-4);
+}
+
+.p-md {
+  padding: var(--space-6);
+}
+
+/* ---- Subcomponentes ---- */
+.media {
+  overflow: hidden;
+  background: var(--color-bg-deep);
+}
+
+.media img {
+  width: 100%;
+  height: 100%;
+  transition: transform 600ms var(--ease);
+}
+
+.hoverable:hover .media img {
+  transform: scale(1.06);
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  flex: 1;
+  padding: var(--space-5);
+}

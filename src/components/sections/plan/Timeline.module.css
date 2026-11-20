@@ -1,0 +1,130 @@
+/* ---------- Filtros ---------- */
+.filters {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: var(--space-5);
+  background: var(--color-bg-deep);
+  border: 1px solid var(--color-border);
+  clip-path: var(--clip-notch);
+}
+
+.filterRow {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.filterLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-width: 90px;
+  font-family: var(--font-heading);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.filterLabel svg {
+  color: var(--color-primary);
+}
+
+.result {
+  margin: var(--space-5) 0 var(--space-6);
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+}
+
+/* ---------- Línea de tiempo ---------- */
+.timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-7);
+  padding-left: var(--space-6);
+}
+
+/* línea vertical */
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  bottom: 0;
+  left: 6px;
+  width: 2px;
+  background: linear-gradient(180deg, var(--color-primary), var(--color-border) 30%, var(--color-border) 85%, transparent);
+}
+
+.monthTitle {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+  font-size: var(--fs-xl);
+}
+
+.marker {
+  position: absolute;
+  left: calc(-1 * var(--space-6));
+  width: 14px;
+  height: 14px;
+  background: var(--color-bg);
+  border: 2px solid var(--color-primary);
+  transform: rotate(45deg);
+  box-shadow: var(--glow-primary);
+}
+
+.monthCount {
+  padding: 0.15rem 0.5rem;
+  font-size: var(--fs-xs);
+  color: var(--color-primary);
+  background: rgb(var(--color-primary-rgb) / 0.1);
+  border: 1px solid rgb(var(--color-primary-rgb) / 0.3);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+/* ---------- Vacío ---------- */
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-8) var(--space-4);
+  text-align: center;
+  border: 1px dashed var(--color-border-strong);
+}
+
+.empty svg {
+  font-size: 2.5rem;
+  color: var(--color-text-muted);
+}
+
+/* ---------- Responsive ---------- */
+@media (min-width: 768px) {
+  .filterRow {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-4);
+  }
+
+  .timeline {
+    padding-left: var(--space-8);
+  }
+
+  .timeline::before {
+    left: 14px;
+  }
+
+  .marker {
+    left: calc(-1 * var(--space-8) + 8px);
+  }
+}

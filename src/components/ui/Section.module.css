@@ -1,0 +1,20 @@
+.section {
+  position: relative;
+  padding-block: var(--space-section);
+}
+
+.flush {
+  padding-block: 0;
+}
+
+.default {
+  background-color: var(--color-bg);
+}
+
+.deep {
+  background-color: var(--color-bg-deep);
+}
+
+.surface {
+  background-color: var(--color-surface);
+}

@@ -1,0 +1,26 @@
+/* Flex + wrap para que la última fila (5 tarjetas = 3 + 2) quede centrada */
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-5);
+}
+
+.item {
+  flex: 1 1 100%;
+  max-width: 420px;
+}
+
+@media (min-width: 640px) {
+  .item {
+    flex-basis: calc((100% - var(--space-5)) / 2);
+    max-width: calc((100% - var(--space-5)) / 2);
+  }
+}
+
+@media (min-width: 992px) {
+  .item {
+    flex-basis: calc((100% - 2 * var(--space-5)) / 3);
+    max-width: calc((100% - 2 * var(--space-5)) / 3);
+  }
+}

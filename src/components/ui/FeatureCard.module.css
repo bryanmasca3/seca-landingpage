@@ -1,0 +1,41 @@
+.feature {
+  gap: var(--space-4);
+}
+
+.icon {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  font-size: 1.6rem;
+  color: var(--color-on-primary);
+  background: var(--card-accent);
+  clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px);
+}
+
+/* número grande con contorno, arriba a la derecha */
+.number {
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-5);
+  font-family: var(--font-heading);
+  font-size: 3.5rem;
+  font-weight: var(--fw-black);
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--color-border-strong);
+  transition: var(--transition);
+}
+
+.feature:hover .number {
+  -webkit-text-stroke-color: var(--card-accent);
+}
+
+.title {
+  font-size: var(--fs-xl);
+}
+
+.text {
+  font-size: var(--fs-sm);
+  line-height: 1.7;
+}

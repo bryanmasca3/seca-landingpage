@@ -1,0 +1,96 @@
+.carousel {
+  --gap: var(--space-5);
+  position: relative;
+}
+
+.viewport {
+  overflow: hidden;
+  /* espacio para que el hover (translateY) no se corte */
+  padding-top: var(--space-3);
+  margin-top: calc(-1 * var(--space-3));
+  touch-action: pan-y;
+  cursor: grab;
+}
+
+.viewport:active {
+  cursor: grabbing;
+}
+
+.track {
+  display: flex;
+  gap: var(--gap);
+  /* desplaza "index" elementos: (ancho de 1 elemento + gap) * index */
+  transform: translateX(calc(-1 * var(--index) * ((100% - (var(--per-view) - 1) * var(--gap)) / var(--per-view) + var(--gap))));
+  transition: transform 600ms var(--ease);
+}
+
+.slide {
+  flex: 0 0 calc((100% - (var(--per-view) - 1) * var(--gap)) / var(--per-view));
+  min-width: 0;
+  user-select: none;
+}
+
+.slide img {
+  pointer-events: none; /* evita "arrastrar la imagen" al hacer swipe */
+}
+
+/* ---------- Controles ---------- */
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-5);
+  margin-top: var(--space-6);
+}
+
+.arrow {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  font-size: 1.4rem;
+  color: var(--color-heading);
+  background: var(--color-surface);
+  clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+  transition: var(--transition);
+}
+
+.toggle {
+  width: 36px;
+  height: 36px;
+  font-size: 1rem;
+}
+
+.arrow:hover {
+  color: var(--color-on-primary);
+  background: var(--color-primary);
+  box-shadow: var(--glow-primary);
+}
+
+.dots {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  background: var(--color-border-strong);
+  transform: rotate(45deg);
+  transition: var(--transition);
+}
+
+.dot:hover {
+  background: var(--color-text);
+}
+
+.dotActive {
+  background: var(--color-primary);
+  box-shadow: var(--glow-primary);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track {
+    transition: none;
+  }
+}

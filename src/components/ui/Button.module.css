@@ -1,0 +1,113 @@
+.btn {
+  --btn-notch: 10px;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  font-family: var(--font-heading);
+  font-weight: var(--fw-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  line-height: 1;
+  white-space: nowrap;
+  clip-path: polygon(
+    var(--btn-notch) 0, 100% 0,
+    100% calc(100% - var(--btn-notch)), calc(100% - var(--btn-notch)) 100%,
+    0 100%, 0 var(--btn-notch)
+  );
+  transition: var(--transition);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.icon {
+  font-size: 1.1em;
+  transition: transform var(--duration) var(--ease);
+}
+
+.btn:hover .icon {
+  transform: translateX(3px);
+}
+
+/* ---- Tamaños ---- */
+.sm {
+  padding: 0.6rem 1.1rem;
+  font-size: var(--fs-xs);
+}
+
+.md {
+  padding: 0.9rem 1.6rem;
+  font-size: var(--fs-sm);
+}
+
+.lg {
+  padding: 1.1rem 2.2rem;
+  font-size: var(--fs-base);
+}
+
+.full {
+  width: 100%;
+}
+
+/* ---- Variantes ---- */
+.primary {
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+}
+
+.primary:hover {
+  background: var(--color-secondary);
+  box-shadow: var(--glow-primary);
+}
+
+/* Outline: el borde se simula con un fondo + pseudo-elemento, porque clip-path corta el border normal */
+.outline {
+  background: var(--color-primary);
+  color: var(--color-primary);
+  z-index: 0;
+}
+
+.outline::before {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  z-index: -1;
+  background: var(--color-bg);
+  clip-path: inherit;
+  transition: var(--transition);
+}
+
+.outline:hover {
+  color: var(--color-on-primary);
+}
+
+.outline:hover::before {
+  background: var(--color-primary);
+}
+
+/* Dark: para usar sobre fondos verdes / claros */
+.dark {
+  background: var(--color-bg-deep);
+  color: var(--color-primary);
+}
+
+.dark:hover {
+  background: var(--color-bg);
+  color: var(--color-secondary);
+  box-shadow: 0 6px 24px rgb(0 0 0 / 0.35);
+}
+
+.ghost {
+  background: transparent;
+  color: var(--color-heading);
+  clip-path: none;
+  padding-inline: 0.25rem;
+}
+
+.ghost:hover {
+  color: var(--color-primary);
+}

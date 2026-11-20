@@ -1,0 +1,56 @@
+.group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.chip {
+  --chip-color: var(--color-primary);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 0.5rem 0.9rem;
+  font-family: var(--font-heading);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+  transition: var(--transition);
+}
+
+.chip:hover {
+  color: var(--color-heading);
+  border-color: var(--chip-color);
+}
+
+.active {
+  color: var(--color-on-primary);
+  background: var(--chip-color);
+  border-color: var(--chip-color);
+}
+
+.active:hover {
+  color: var(--color-on-primary);
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  background: var(--chip-color);
+}
+
+.active .dot {
+  background: var(--color-on-primary);
+}
+
+.count {
+  min-width: 1.5em;
+  padding: 0 0.35em;
+  font-size: var(--fs-xs);
+  text-align: center;
+  background: rgb(0 0 0 / 0.25);
+}

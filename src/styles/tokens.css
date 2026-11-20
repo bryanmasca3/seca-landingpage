@@ -1,0 +1,103 @@
+/* ==========================================================================
+   TOKENS DE DISEÑO
+   Cambia un valor aquí y se actualiza en toda la web.
+   ========================================================================== */
+
+:root {
+  /* ---- Colores: fondos (de más oscuro a más claro) ---- */
+  --color-bg: #0f161b;          /* fondo general */
+  --color-bg-deep: #0a0e13;     /* secciones alternas, footer */
+  --color-surface: #182029;     /* tarjetas */
+  --color-surface-2: #1f2933;   /* tarjetas en hover / elementos elevados */
+
+  /* ---- Colores: acentos ---- */
+  --color-primary: #45f882;     /* verde neón: botones, resaltados */
+  --color-primary-rgb: 69 248 130;
+  --color-secondary: #ffbe18;   /* amarillo: hover, detalles */
+  --color-secondary-rgb: 255 190 24;
+
+  /* ---- Colores: texto ---- */
+  --color-heading: #ffffff;
+  --color-text: #adb0bc;
+  --color-text-muted: #7c8090;
+  --color-on-primary: #0f161b;  /* texto sobre botones verdes */
+
+  /* ---- Colores: bordes ---- */
+  --color-border: #22292f;
+  --color-border-strong: #2c3137;
+
+  /* ---- Colores por área (para badges, íconos y filtros) ---- */
+  --area-administracion: #45f882;
+  --area-evangelismo: #ffbe18;
+  --area-comunion: #4fc3f7;
+  --area-discipulado: #b388ff;
+  --area-accion-social: #ff7a59;
+
+  /* ---- Tipografía ---- */
+  --font-heading: 'Barlow', system-ui, sans-serif;
+  --font-body: 'Poppins', system-ui, sans-serif;
+
+  --fs-xs: 0.75rem;     /* 12px */
+  --fs-sm: 0.875rem;    /* 14px */
+  --fs-base: 1rem;      /* 16px */
+  --fs-lg: 1.125rem;    /* 18px */
+  --fs-xl: 1.5rem;      /* 24px */
+  --fs-2xl: clamp(1.75rem, 1.2rem + 2vw, 2.5rem);   /* títulos de sección */
+  --fs-3xl: clamp(2.5rem, 1.5rem + 4.5vw, 5rem);    /* título del hero */
+
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+  --fw-black: 800;
+
+  --lh-tight: 1.1;
+  --lh-base: 1.75;
+
+  /* ---- Espaciado (escala de 4px) ---- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-section: clamp(4rem, 3rem + 4vw, 7.5rem);  /* padding vertical de cada sección */
+
+  /* ---- Layout ---- */
+  --container-max: 1200px;
+  --container-gutter: 1rem;
+  --header-height: 80px;
+
+  /* ---- Formas: esquinas recortadas estilo "gaming" ---- */
+  --notch: 14px;
+  --clip-notch: polygon(
+    var(--notch) 0, 100% 0,
+    100% calc(100% - var(--notch)), calc(100% - var(--notch)) 100%,
+    0 100%, 0 var(--notch)
+  );
+  --clip-notch-br: polygon(0 0, 100% 0, 100% calc(100% - var(--notch)), calc(100% - var(--notch)) 100%, 0 100%);
+  --radius-sm: 4px;
+  --radius-md: 8px;
+
+  /* ---- Efectos ---- */
+  --glow-primary: 0 0 24px rgb(var(--color-primary-rgb) / 0.45);
+  --text-glow: 0 0 18px rgb(var(--color-primary-rgb) / 0.6);
+  --shadow-card: 0 4px 40px rgb(0 0 0 / 0.5);
+
+  /* ---- Transiciones ---- */
+  --ease: cubic-bezier(0.25, 0.8, 0.25, 1);
+  --duration: 250ms;
+  --transition: all var(--duration) var(--ease);
+
+  /* ---- Capas ---- */
+  --z-header: 100;
+  --z-overlay: 200;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --container-gutter: 1.5rem;
+  }
+}

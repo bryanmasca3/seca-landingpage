@@ -1,0 +1,116 @@
+/* Mosaico: grid con filas de alto fijo; `dense` rellena los huecos */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: 150px;
+  grid-auto-flow: dense;
+  gap: var(--space-3);
+}
+
+.item {
+  min-width: 0;
+}
+
+.large { grid-column: span 2; grid-row: span 2; }
+.wide  { grid-column: span 2; }
+.tall  { grid-row: span 2; }
+
+.button {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--color-surface);
+  clip-path: var(--clip-notch);
+  cursor: zoom-in;
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  transition: transform 700ms var(--ease), filter var(--duration) var(--ease);
+}
+
+.button:hover .img,
+.button:focus-visible .img {
+  transform: scale(1.07);
+  filter: brightness(0.55);
+}
+
+/* ---- Capa al pasar el mouse ---- */
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  border: 2px solid transparent;
+  opacity: 0;
+  transition: var(--transition);
+}
+
+.button:hover .overlay,
+.button:focus-visible .overlay {
+  opacity: 1;
+  border-color: var(--color-primary);
+  box-shadow: inset 0 0 30px rgb(var(--color-primary-rgb) / 0.35);
+}
+
+.zoom {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  font-size: 1.3rem;
+  color: var(--color-on-primary);
+  background: var(--color-primary);
+  box-shadow: var(--glow-primary);
+  clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+  transform: translateY(10px);
+  transition: transform var(--duration) var(--ease);
+}
+
+.button:hover .zoom,
+.button:focus-visible .zoom {
+  transform: none;
+}
+
+.title {
+  padding-inline: var(--space-3);
+  font-family: var(--font-heading);
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--color-heading);
+}
+
+.button:focus-visible {
+  outline: none;
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 200px;
+    gap: var(--space-4);
+  }
+}
+
+/* En pantallas táctiles no hay hover: mostrar el título siempre, abajo */
+@media (hover: none) {
+  .overlay {
+    opacity: 1;
+    justify-content: flex-end;
+    padding-bottom: var(--space-3);
+    background: linear-gradient(0deg, rgb(10 14 19 / 0.8), transparent 50%);
+  }
+
+  .zoom {
+    display: none;
+  }
+}
